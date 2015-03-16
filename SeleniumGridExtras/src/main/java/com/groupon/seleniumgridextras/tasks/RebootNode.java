@@ -36,12 +36,12 @@
  */
 package com.groupon.seleniumgridextras.tasks;
 
-import com.google.gson.JsonObject;
+import org.apache.log4j.Logger;
 
+import com.google.gson.JsonObject;
 import com.groupon.seleniumgridextras.config.RuntimeConfig;
 import com.groupon.seleniumgridextras.tasks.config.TaskDescriptions;
 import com.groupon.seleniumgridextras.utilities.TimeStampUtility;
-import org.apache.log4j.Logger;
 
 public class RebootNode extends ExecuteOSTask {
 
@@ -79,6 +79,12 @@ public class RebootNode extends ExecuteOSTask {
 
     @Override
     public String getMacCommand(String param) {
+        logReboot();
+        return "shutdown -r now";
+    }
+
+    @Override
+    public String getLinuxCommand(String param) {
         logReboot();
         return "shutdown -r now";
     }
